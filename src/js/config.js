@@ -2,11 +2,11 @@
 
 export const CONFIG = {
   DROWSINESS: {
-    // 15 seconds required continuous closure
-    EYE_CLOSURE_THRESHOLD_MS: 15000, 
+    // 6 seconds required continuous closure
+    EYE_CLOSURE_THRESHOLD_MS: 6000,
     // Eye blendshape threshold above which an eye is considered closed
     // Depending on model, blendshapes like eyeBlinkLeft range from 0 (open) to 1 (closed)
-    BLINK_BLENDSHAPE_THRESHOLD: 0.3 
+    BLINK_BLENDSHAPE_THRESHOLD: 0.3
   },
   SHAKE: {
     // Interval for shake detection frame pulling
