@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Vehicle Safety Monitor</title>
+  <link rel="stylesheet" href="./src/css/style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>Smart Vehicle Safety Monitor</h1>
+      <p class="subtitle">AI-Powered Driver Safety Monitoring</p>
+    </header>
+
+    <main class="dashboard">
+      <!-- Media Section -->
+      <section class="panel media-panel">
+        <h2 class="panel-title">Live Camera Feed</h2>
+        <div class="video-container">
+          <video id="webcamView" autoplay playsinline muted></video>
+          <canvas id="overlayCanvas"></canvas> <!-- For MediaPipe drawing -->
+          <div id="videoErrorMessage" class="video-error hidden"></div>
+        </div>
+        
+        <!-- Hidden canvas for processing (shake detection & media pipe) -->
+        <canvas id="processingCanvas" style="display: none;"></canvas>
+
+        <div class="controls-row">
+          <button id="btnStart" class="btn btn-primary">Start Monitoring</button>
+          <button id="btnStop" class="btn btn-danger" disabled>Stop Monitoring</button>
+          <button id="btnReset" class="btn btn-secondary" title="Reset all timers and warnings">Reset</button>
+          <button id="btnMuteToggle" class="btn btn-secondary">Mute Alarm</button>
+        </div>
+      </section>
+
+      <!-- Status Section -->
+      <section class="panel status-panel">
+        <h2 class="panel-title">System Status</h2>
+        
+        <div class="status-grid">
+          <div class="status-card">
+            <span class="status-label">Overall Status</span>
+            <span id="statusOverall" class="badge">Not Started</span>
+          </div>
+          
+          <div class="status-card">
+            <span class="status-label">Driver Drowsiness</span>
+            <span id="statusDrowsiness" class="badge">--</span>
+          </div>
+
+          <div class="status-card">
+            <span class="status-label">Camera Stability</span>
+            <span id="statusShaking" class="badge">--</span>
+          </div>
+        </div>
+
+        <div class="timer-section">
+          <h3>Eye-Closure Duration</h3>
+          <div class="timer-display">
+            <span id="closureTimer">0.0</span>s
+          </div>
+        </div>
+
+        <div class="alert-section" id="alertContainer">
+          <h3 class="hidden">Active Alerts</h3>
+          <!-- Alerts will be dynamically injected here -->
+        </div>
+
+        <div class="disclaimer">
+          <p><strong>Note:</strong> This is a college prototype. It should not be used in a real vehicle as a primary safety system.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- App Entry Point using ES Modules -->
+  <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>
